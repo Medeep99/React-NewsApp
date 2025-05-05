@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion} from "framer-motion";
 
 const Navbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -29,14 +30,14 @@ const Navbar = () => {
         <nav className="hidden md:flex space-x-4">
           {["business", "entertainment", "health", "science", "sports", "technology"].map((category) => (
      
-              <div key={category} className="group rounded-md hover:bg-gray-700 transition">
+              <motion.div key={category} className="group rounded-md" whileHover={{ scale: 1.15, backgroundColor : "gray", transition : {duration: 0.15}  }} whileTap={{ scale: 0.95 }}>
               <Link
                 to={`/${category}`}
-                className="block px-4 py-2 text-sm font-medium text-white transition-all duration-200 group-hover:text-lg"
+                className="block px-4 py-2 text-sm font-medium text-white "
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </Link>
-            </div>
+            </motion.div>
           
           ))}
         </nav>

@@ -1,43 +1,70 @@
 import React from "react";
+import { motion } from "framer-motion";
+import './mine.css'
 
-const NewsModal = ({ element, onClose }) => {
-  if (!element.article) return null;
-  console.log(element);
 
+export default function NewsModal({selectedContent}) {
+  
   return (
-    
-    <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black bg-opacity-50">
-      <div className="bg-white max-w-3xl w-full p-6 rounded-lg shadow-lg relative overflow-y-auto max-h-[90vh]">
-        <button
-          onClick={onClose}
-          className="absolute top-3 right-3 text-gray-600 hover:text-black text-2xl"
-        >
-          &times;
-        </button>
-        <h2 className="text-2xl font-bold mb-2">{element.article.title}</h2>
-        <p className="text-sm text-gray-500 mb-2">
-          {element.article.author || "Unknown"} |{" "}
-          {new Date(element.article.publishedAt).toGMTString()}
-        </p>
-        {element.article.urlToImage && (
-          <img
-            src={element.article.urlToImage}
-            alt="News"
-            className="w-full h-auto mb-4 rounded"
-          />
-        )}
-        <p className="text-gray-800">{element.article.content || element.article.description}</p>
-        <a
-          href={element.article.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block mt-4 text-blue-600 underline"
-        >
-          Read full article on source site
-        </a>
+    <div>
+
+
+      <div className="popup-container"
+ 
+      
+      >
+        <div>
+          <div className="p-6 mt-3 pt-0">
+            <img src={selectedContent.urlToImage} alt="" />
+          </div>
+          <div className="p-5 pt-0">
+            <h1 className="h1 text-base font-large text-gray-900 line-clamp-2">
+              {selectedContent.title}
+            </h1>
+            <p>{selectedContent.description}</p>
+            {/* <p>{selectedContent.content}</p> */}
+            <div>
+              <hr className="bg-slate-500 text-slate-300"></hr>
+              <p>
+                By <b>{selectedContent.author || "Unknown"}</b> <br />
+                Published at: <b>{new Date(selectedContent.publishedAt).toGMTString()}</b>
+              </p>
+            </div>
+
+            <motion.a
+              style={{
+                maxWidth: "300px",
+                margin: "0 auto",
+                textAlign: "center",
+
+                textDecoration: "none",
+              }}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                color: "white",
+                transition: { duration: 0.2 },
+              }}
+              whileTap={{
+                scale: 1,
+                backgroundColor: "rgba(0, 0, 0, 1)",
+                color: "white",
+                transition: { duration: 0.0001 },
+                
+              }}
+              
+              href={selectedContent.url}
+            
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full py-3 px-6 text-xs font-bold text-center uppercase transition-all rounded-lg bg-black/10 text-black"
+            >
+              Go to {selectedContent.source.name}
+            </motion.a>
+          </div>
+        </div>
       </div>
+
     </div>
   );
-};
-
-export default NewsModal;
+}

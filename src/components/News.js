@@ -66,13 +66,14 @@ const News = ({
       >
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((element, index) => (
-            <NewsItem element={element}
+            <NewsItem  element={element}
               key={element.url + index}
               source={element.source.name ? element.source.name : "Unknown"}
               title={
                 element.title
                   ? element.title
                   : "Click read more to know more"
+                
               }
               description={
                 element.description
