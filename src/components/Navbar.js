@@ -14,7 +14,7 @@ const Navbar = () => {
       <header className="bg-black p-4 flex items-center justify-between sticky top-0 z-50 shadow-xl">
         <div>
           <Link to="/" className="block px-4 py-2 text-sm font-medium text-white ">
-            <h1 className="text-xl font-bold">NewsMonkey</h1>
+            <h1 className="text-xl font-bold">News99</h1>
           </Link>
         </div>
 

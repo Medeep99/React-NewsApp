@@ -21,7 +21,7 @@ const News = ({
   };
 
   useEffect(() => {
-    document.title = `${capitalizeFirstLetter(props.category)} - NewsMonkey`;
+    document.title = `${capitalizeFirstLetter(props.category)} - News99`;
     fetchMoreData();
     // eslint-disable-next-line
   }, []);
@@ -42,7 +42,7 @@ const News = ({
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <h1 className="text-3xl font-bold text-center mb-6">
-        NewsMonkey - {capitalizeFirstLetter(props.category)} News
+        News99 - {capitalizeFirstLetter(props.category)} News
       </h1>
 
       
